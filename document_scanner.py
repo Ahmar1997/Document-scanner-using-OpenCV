@@ -3,24 +3,24 @@ import numpy as np
  
  
 ###################################
-widthImg=640
+widthImg=640                                               # setting video width and height
 heightImg =640
 #####################################
  
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0)                         # accessing webcam
 cap.set(10,150)
  
  
-def preProcessing(img):
-    imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    imgBlur = cv2.GaussianBlur(imgGray,(5,5),1)
-    imgCanny = cv2.Canny(imgBlur,200,200)
-    kernel = np.ones((5,5))
-    imgDial = cv2.dilate(imgCanny,kernel,iterations=2)
-    imgThres = cv2.erode(imgDial,kernel,iterations=1)
+def preProcessing(img):                                                # preprocessing the image
+    imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)                     # converting to grayscale
+    imgBlur = cv2.GaussianBlur(imgGray,(5,5),1)                        # adding blur
+    imgCanny = cv2.Canny(imgBlur,200,200)                              # edge detection using Canny
+    kernel = np.ones((5,5))                                            # defining kernek size
+    imgDial = cv2.dilate(imgCanny,kernel,iterations=2)                 
+    imgThres = cv2.erode(imgDial,kernel,iterations=1)                  # removing unecessary pixels using erosion
     return imgThres
  
-def getContours(img):
+def getContours(img):                                                  # function to identify contours in the image
     biggest = np.array([])
     maxArea = 0
     contours,hierarchy = cv2.findContours(img,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
@@ -49,7 +49,7 @@ def reorder (myPoints):
     #print("NewPoints",myPointsNew)
     return myPointsNew
  
-def getWarp(img,biggest):
+def getWarp(img,biggest):                                     # getting warped image
     biggest = reorder(biggest)
     pts1 = np.float32(biggest)
     pts2 = np.float32([[0, 0], [widthImg, 0], [0, heightImg], [widthImg, heightImg]])
@@ -62,7 +62,7 @@ def getWarp(img,biggest):
     return imgCropped
  
  
-def stackImages(scale,imgArray):
+def stackImages(scale,imgArray):                                  # stacking images
     rows = len(imgArray)
     cols = len(imgArray[0])
     rowsAvailable = isinstance(imgArray[0], list)
