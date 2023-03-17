@@ -6,5 +6,5 @@ This program allows you to use your webcam to detect documents and provide a war
 `git clone https://github.com/Ahmar1997/document-scanner-using-OpenCV.git`
 
 2. Install the required packages:
-`pip install opencv-python\n
+`pip install opencv-python  
 pip install numpy`
