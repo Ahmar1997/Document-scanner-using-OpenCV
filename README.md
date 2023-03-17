@@ -2,9 +2,9 @@
 This program allows you to use your webcam to detect documents and provide a warped image scan view of them. It is useful for situations where you need to quickly scan a document without having access to a traditional scanner.
 
 ## Installation
-1. Clone the repository:
+1. Clone the repository:  
 `git clone https://github.com/Ahmar1997/document-scanner-using-OpenCV.git`
 
-2. Install the required packages:
+2. Install the required packages:  
 `pip install opencv-python`  
 `pip install numpy`
