@@ -3,4 +3,4 @@ This program allows you to use your webcam to detect documents and provide a war
 
 ## Installation
 Clone the repository:
-`git clone https://github.com/your-username/document-scanner.gi](https://github.com/Ahmar1997/document-scanner-using-OpenCV.git`
+`git clone https://github.com/Ahmar1997/document-scanner-using-OpenCV.git`
